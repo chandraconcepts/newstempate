@@ -1,420 +1,620 @@
 <!DOCTYPE html>
 <html lang="ta">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>வாங்கவா சிட்டி எக்ஸ்ப்ரஸ் - செய்தி டெம்ப்ளேட்</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;700&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>வாங்கவா சிட்டி எக்ஸ்ப்ரஸ் - செய்தி டெம்ப்ளேட்</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;700&display=swap');
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { 
-    font-family: 'Noto Sans Tamil', sans-serif; 
-    background: white; 
-    overflow-x: hidden; 
-    font-size: 14px; 
-    line-height: 1.4;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.newspaper {
-    width: 800px;     /* 🔒 fixed width */
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+        body {
+            font-family: 'Noto Sans Tamil', sans-serif;
+            background: white;
+            overflow-x: hidden;
+            font-size: 14px;
+            line-height: 1.4;
+        }
 
-/* Header */
-.header {
-    position: relative;
-    height: 182.3271px;
-    background: #0b1fb8;
-    overflow: hidden;
-}
-.logo { position: absolute; top: 18px; left: 20px; }
-.imageheader { height: 118.06px; width: 427.64px; }
-.breaking-news { 
-    position: absolute; right: 5px; 
-    font-weight: bold; padding: 4px 12px; 
-    font-size: 16px; z-index: 3;
-}
-.newseheader { height: 108.85px; width: 275.76px; }
+        .newspaper {
+            width: 800px;
+            /* 🔒 fixed width */
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-.social-bar {
-    position: absolute; bottom: 0; left: 0; width: 100%;
-    background: #0b1fb8; color: #fff;
-    display: flex; justify-content: space-around; align-items: center;
-    padding: 8px 10px; font-size: 14px; font-weight: 500;
-}
-.social-bar .item { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
-.social-bar i { font-size: 16px; }
-.fa-envelope { color: #ff4d4d; }
-.fa-facebook { color: #1877f2; }
-.fa-twitter { color: #ffffff; }
-.fa-youtube-play { color: #ff0000; }
+        /* Header */
+        .header {
+            position: relative;
+            height: 182.3271px;
+            background: #0b1fb8;
+            overflow: hidden;
+        }
 
-/* Main Content */
-.main-content {
-    padding: 20px; min-height: 600px;
-    border: 5px solid blue; position: relative;
-}
+        .logo {
+            position: absolute;
+            top: 18px;
+            left: 20px;
+        }
 
-.inside-date {
-    position: absolute; top: 20px; right: 20px;
-    font-weight: bold; font-size: 18px; background: white;
-    padding: 5px 10px; border-radius: 4px;
-}
+        .imageheader {
+            height: 118.06px;
+            width: 427.64px;
+        }
 
-.inside-article { margin-bottom: 40px; }
-.inside-header {
-    display: flex; align-items: center;
-    margin-bottom: 15px; font-size: 24px; font-weight: bold;
-}
-.inside-pin img { width: 36px; margin-right: 15px; }
+        .breaking-news {
+            position: absolute;
+            right: 5px;
+            font-weight: bold;
+            padding: 4px 12px;
+            font-size: 16px;
+            z-index: 3;
+        }
 
-.image-container { text-align: center; margin: 20px 0; }
-.article-image {
-    width: 100%; max-width: 500px; height: 350px;
-    object-fit: cover; border: 2px solid #ddd;
-    margin: 0 auto; display: block;
-}
+        .newseheader {
+            height: 108.85px;
+            width: 275.76px;
+        }
 
-.caption {
-    background: white; color: black;
-    padding: 20px; text-align: justify;
-    font-size: 16px; line-height: 1.6;
-    border-left: 4px solid blue; margin-top: 10px;
-}
-.caption-title {
-    font-size: 20px; font-weight: bold;
-    margin-bottom: 10px; text-align: center;
-}
+        .social-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #0b1fb8;
+            color: #fff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 8px 10px;
+            font-size: 14px;
+            font-weight: 500;
+        }
 
-/* Footer */
-.footer-top {
-    height: 175.3453px;
-    background: linear-gradient(to bottom, #0000ff, #0000cc);
-    position: relative; color: white;
-}
-.footer-img {
-    width: 752.2174px; height: 174.3453px;
-    margin-left: 2px;
-}
+        .social-bar .item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
 
-/* 🔥 COMPLETE CONTROL PANEL */
-.control-panel {
-    position: fixed; top: 0; left: 0;
-    z-index: 10000; background: linear-gradient(135deg, #0b1fb8, #1e3a8a);
-    color: white; width: 100%; height: 100vh;
-    padding: 20px; overflow-y: auto; transform: translateX(0);
-    transition: transform 0.3s ease;
-}
-.control-panel.hidden { transform: translateX(-100%); }
+        .social-bar i {
+            font-size: 16px;
+        }
 
-.panel-header {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 25px; padding-bottom: 15px;
-    border-bottom: 2px solid rgba(255,255,255,0.3);
-}
-.close-btn {
-    background: #dc3545; color: white; border: none;
-    padding: 10px 15px; border-radius: 25px; cursor: pointer;
-    font-size: 16px; font-weight: bold;
-}
+        .fa-envelope {
+            color: #ff4d4d;
+        }
 
-.control-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-    margin-bottom: 25px;
-}
-@media (max-width: 480px) { .control-grid { grid-template-columns: 1fr; } }
+        .fa-facebook {
+            color: #1877f2;
+        }
 
-.control-group {
-    background: rgba(255,255,255,0.1); padding: 15px;
-    border-radius: 12px; backdrop-filter: blur(10px);
-}
-.control-group label {
-    display: block; font-weight: bold; margin-bottom: 8px;
-    font-size: 14px; color: #fff;
-}
-.control-group input, .control-group textarea {
-    width: 100%; padding: 12px; border: 2px solid rgba(255,255,255,0.3);
-    border-radius: 8px; background: rgba(255,255,255,0.95);
-    font-family: 'Noto Sans Tamil', sans-serif; font-size: 14px;
-    transition: border-color 0.3s;
-}
-.control-group input:focus, .control-group textarea:focus {
-    outline: none; border-color: #0b1fb8;
-}
-.control-group textarea { resize: vertical; min-height: 90px; }
+        .fa-twitter {
+            color: #ffffff;
+        }
 
-.image-preview {
-    grid-column: span 2; text-align: center;
-    background: rgba(255,255,255,0.1); padding: 15px;
-    border-radius: 12px; border: 2px dashed rgba(255,255,255,0.5);
-}
-.image-preview img {
-    max-width: 200px; max-height: 150px;
-    border-radius: 8px; margin-top: 10px;
-}
-@media (max-width: 480px) { .image-preview { grid-column: span 1; } }
+        .fa-youtube-play {
+            color: #ff0000;
+        }
 
-.action-buttons {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 12px; padding: 20px; background: rgba(0,0,0,0.2);
-    border-radius: 12px;
-}
-@media (max-width: 480px) { 
-    .action-buttons { grid-template-columns: repeat(2, 1fr); } 
-}
-.action-btn {
-    padding: 15px; border: none; border-radius: 10px;
-    font-family: 'Noto Sans Tamil', sans-serif; font-weight: bold;
-    font-size: 14px; cursor: pointer; transition: all 0.3s;
-    display: flex; flex-direction: column; align-items: center;
-    gap: 5px;
-}
-.btn-update { background: #28a745; color: white; }
-.btn-reset { background: #ffc107; color: #0b1fb8; }
-.btn-print { background: #0b1fb8; color: white; }
-.btn-whatsapp { background: #25D366; color: white; }
+        /* Main Content */
+        .main-content {
+            padding: 20px;
+            min-height: 600px;
+            border: 5px solid blue;
+            position: relative;
+        }
 
-.action-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+        .inside-date {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
 
-.toggle-panel {
-    position: fixed; top: 20px; right: 20px;
-    z-index: 10001; background: #0b1fb8; color: white;
-    border: none; padding: 15px 20px; border-radius: 30px;
-    cursor: pointer; font-family: 'Noto Sans Tamil', sans-serif;
-    font-size: 14px; font-weight: bold; box-shadow: 0 6px 20px rgba(11,31,184,0.4);
-}
+        .inside-article {
+            margin-bottom: 40px;
+        }
 
-.status-toast {
-    position: fixed; top: 100px; left: 50%;
-    transform: translateX(-50%); z-index: 10002;
-    padding: 15px 25px; border-radius: 30px; font-weight: bold;
-    color: white; display: none; min-width: 250px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-}
+        .inside-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 24px;
+            font-weight: bold;
+        }
 
-@media print {
-    .control-panel, .toggle-panel, .status-toast { display: none !important; }
-}
-</style>
+        .inside-pin img {
+            width: 36px;
+            margin-right: 15px;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .article-image {
+            width: 100%;
+            max-width: 500px;
+            height: 350px;
+            object-fit: cover;
+            border: 2px solid #ddd;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .caption {
+            background: white;
+            color: black;
+            padding: 20px;
+            text-align: justify;
+            font-size: 16px;
+            line-height: 1.6;
+            border-left: 4px solid blue;
+            margin-top: 10px;
+        }
+
+        .caption-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer-top {
+            height: 175.3453px;
+            background: linear-gradient(to bottom, #0000ff, #0000cc);
+            position: relative;
+            color: white;
+        }
+
+        .footer-img {
+            width: 752.2174px;
+            height: 174.3453px;
+            margin-left: 2px;
+        }
+
+        /* 🔥 COMPLETE CONTROL PANEL */
+        .control-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10000;
+            background: linear-gradient(135deg, #0b1fb8, #1e3a8a);
+            color: white;
+            width: 100%;
+            height: 100vh;
+            padding: 20px;
+            overflow-y: auto;
+            transform: translateX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .control-panel.hidden {
+            transform: translateX(-100%);
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .close-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .control-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        @media (max-width: 480px) {
+            .control-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .control-group {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .control-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .control-group input,
+        .control-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.95);
+            font-family: 'Noto Sans Tamil', sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .control-group input:focus,
+        .control-group textarea:focus {
+            outline: none;
+            border-color: #0b1fb8;
+        }
+
+        .control-group textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .image-preview {
+            grid-column: span 2;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+        }
+
+        .image-preview img {
+            max-width: 200px;
+            max-height: 150px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 480px) {
+            .image-preview {
+                grid-column: span 1;
+            }
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+        }
+
+        @media (max-width: 480px) {
+            .action-buttons {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .action-btn {
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Noto Sans Tamil', sans-serif;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-update {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-reset {
+            background: #ffc107;
+            color: #0b1fb8;
+        }
+
+        .btn-print {
+            background: #0b1fb8;
+            color: white;
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .toggle-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10001;
+            background: #0b1fb8;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Noto Sans Tamil', sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 6px 20px rgba(11, 31, 184, 0.4);
+        }
+
+        .status-toast {
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10002;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            color: white;
+            display: none;
+            min-width: 250px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        @media print {
+
+            .control-panel,
+            .toggle-panel,
+            .status-toast {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
-<!-- 🔥 FULLY LOADED CONTROL PANEL -->
-<div class="control-panel" id="controlPanel">
-    <div class="panel-header">
-        <h2 style="margin: 0;">⚙️ செய்தி அமைப்பு</h2>
-        <button class="close-btn" onclick="togglePanel()">❌ மூடு</button>
-    </div>
-    
-    <div class="control-grid">
-        <!-- LOCATION -->
-        <div class="control-group">
-            <label>📍 ஊர் பெயர்</label>
-            <input type="text" id="locationInput" value="கோவை">
+    <!-- 🔥 FULLY LOADED CONTROL PANEL -->
+    <div class="control-panel" id="controlPanel">
+        <div class="panel-header">
+            <h2 style="margin: 0;">⚙️ செய்தி அமைப்பு</h2>
+            <button class="close-btn" onclick="togglePanel()">❌ மூடு</button>
         </div>
-        
-        <!-- DATE -->
-        <div class="control-group">
-            <label>📅 தேதி</label>
-            <input type="text" id="dateInput" value="08/01/26">
-        </div>
-        
-        <!-- HEADLINE -->
-        <div class="control-group">
-            <label>📰 தலைப்பு</label>
-            <input type="text" id="headlineInput" value="தீ பரவட்டும், அண்ணா ஆள்கிறான்">
-        </div>
-        
-        <!-- IMAGE UPLOAD -->
-        <div class="control-group image-preview">
-            <label>🖼️ செய்தி படம்</label>
-            <input type="file" id="imageUpload" accept="image/*">
-            <div id="imagePreview">
-                <img id="previewImg" src="./assets/thala.webp" alt="Preview">
-                <p style="color: #ccc; margin: 10px 0 0 0;">படத்தை தேர்ந்தெடுக்கவும்</p>
+
+        <div class="control-grid">
+            <!-- LOCATION -->
+            <div class="control-group">
+                <label>📍 ஊர் பெயர்</label>
+                <input type="text" id="locationInput" value="கோவை">
             </div>
-        </div>
-        
-        <!-- CONTENT -->
-        <div class="control-group" style="grid-column: span 2;">
-            <label>📝 செய்தி உரை</label>
-            <textarea id="contentInput">கள்ளப்பாக்கல் ஊராட்சியில் மக்கள் தொடர்பு விழா நடைபெற்றது. மக்கள் பல்வேறு கோரிக்கைகளை மனு வழங்கினர். அதிகாரிகள் பதிலளித்தனர்.</textarea>
-        </div>
-    </div>
-    
-    <!-- ACTION BUTTONS -->
-    <div class="action-buttons">
-        <button class="action-btn btn-update" onclick="updateNews()">
-            <i class="fa fa-refresh"></i>🔄 புதுப்பி
-        </button>
-        <button class="action-btn btn-reset" onclick="resetNews()">
-            <i class="fa fa-undo"></i>↩️ மீட்டமை
-        </button>
-        <button class="action-btn btn-print" onclick="printNews()">
-            <i class="fa fa-print"></i>🖨️ அச்சிடு
-        </button>
-        <button class="action-btn btn-whatsapp" onclick="shareWhatsApp()">
-            <i class="fa fa-whatsapp"></i>📱 WhatsApp
-        </button>
-    </div>
-</div>
 
-<!-- Toggle Button -->
-<button class="toggle-panel" onclick="togglePanel()">
-    <i class="fa fa-cogs"></i> கட்டுப்பாடுகள்
-</button>
+            <!-- DATE -->
+            <div class="control-group">
+                <label>📅 தேதி</label>
+                <input type="text" id="dateInput" value="10/01/26">
+            </div>
 
-<!-- Status Toast -->
-<div class="status-toast" id="statusToast"></div>
+            <!-- HEADLINE -->
+            <div class="control-group">
+                <label>📰 தலைப்பு</label>
+                <input type="text" id="headlineInput" value="தீ பரவட்டும், அண்ணா ஆள்கிறான்">
+            </div>
 
-<!-- NEWSPAPER -->
-<div class="newspaper">
-    <div class="header">
-        <div class="logo">
-            <img src="./assets/news_template-1-1.png" class="imageheader" alt="Logo">
-        </div>
-        <div class="breaking-news">
-            <h3 style="color: #ffffff; margin: 0; font-size: 16px;">PRGI.NO. TNTAM/25/A3172</h3>
-            <img src="./assets/news_template-1-2.png" class="newseheader" alt="News Header">
-        </div>
-        <div class="social-bar">
-            <div class="item"><i class="fa fa-envelope"></i><span>vanakamcityxpress@gmail.com</span></div>
-            <div class="item"><i class="fa fa-facebook"></i><span>vanakamcityxpress</span></div>
-            <div class="item"><i class="fa fa-twitter"></i><span>vanakamcityxpress</span></div>
-            <div class="item"><i class="fa fa-youtube-play"></i><span>VanakamCityXpress</span></div>
-        </div>
-    </div>
-
-    <div class="main-content">
-        <div class="inside-date" id="newsDate">DATE : 10/01/26</div>
-        
-        <div class="inside-article">
-            <div class="inside-header">
-                <div class="inside-pin">
-                    <img src="./assets/location.jpg" alt="Location Pin">
+            <!-- IMAGE UPLOAD -->
+            <div class="control-group image-preview">
+                <label>🖼️ செய்தி படம்</label>
+                <input type="file" id="imageUpload" accept="image/*">
+                <div id="imagePreview">
+                    <img id="previewImg" src="./assets/thala.webp" alt="Preview">
+                    <p style="color: #ccc; margin: 10px 0 0 0;">படத்தை தேர்ந்தெடுக்கவும்</p>
                 </div>
-                <div id="newsTitle">கோவை</div>
             </div>
-            
-            <div class="image-container">
-                <img id="newsImage" src="./assets/thala.webp" alt="செய்தி படம்" class="article-image">
+
+            <!-- CONTENT -->
+            <div class="control-group" style="grid-column: span 2;">
+                <label>📝 செய்தி உரை</label>
+                <textarea
+                    id="contentInput">சிவகார்த்திகேயன் நடித்திருக்கும் பராசக்தி திரைப்படம் சனிக்கிழமையன்று (ஜனவரி 10) வெளியாகிறது. இந்தப் படம் மத்திய திரைப்பட சான்றிதழ் வாரியத்தின் (சிபிஎப்சி) சான்றிதழ் பெறுவதற்காக அனுப்பப்பட்டபோது, அந்தப் படத்திலிருந்து 20க்கும் மேற்பட்ட விஷயங்களை மாற்றவும் நீக்கவும் சொல்லப்பட்டது. </textarea>
             </div>
-            
-            <div class="caption">
-                <div class="caption-title" id="newsHeadline">'தீ பரவட்டும், அண்ணா ஆள்கிறான்'</div>
-                <div id="newsContent"></div>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="action-buttons">
+            <button class="action-btn btn-update" onclick="updateNews()">
+                <i class="fa fa-refresh"></i>🔄 புதுப்பி
+            </button>
+            <button class="action-btn btn-reset" onclick="resetNews()">
+                <i class="fa fa-undo"></i>↩️ மீட்டமை
+            </button>
+            <button class="action-btn btn-print" onclick="printNews()">
+                <i class="fa fa-print"></i>🖨️ அச்சிடு
+            </button>
+            <button class="action-btn btn-whatsapp" onclick="downloadNews()">
+                <i class="fa fa-download"></i>📥 பதிவிறக்கம்
+            </button>
+
+        </div>
+    </div>
+
+    <!-- Toggle Button -->
+    <button class="toggle-panel" onclick="togglePanel()">
+        <i class="fa fa-cogs"></i> கட்டுப்பாடுகள்
+    </button>
+
+    <!-- Status Toast -->
+    <div class="status-toast" id="statusToast"></div>
+
+    <!-- NEWSPAPER -->
+    <div class="newspaper">
+        <div class="header">
+            <div class="logo">
+                <img src="./assets/news_template-1-1.png" class="imageheader" alt="Logo">
+            </div>
+            <div class="breaking-news">
+                <h3 style="color: #ffffff; margin: 0; font-size: 16px;">PRGI.NO. TNTAM/25/A3172</h3>
+                <img src="./assets/news_template-1-2.png" class="newseheader" alt="News Header">
+            </div>
+            <div class="social-bar">
+                <div class="item"><i class="fa fa-envelope"></i><span>vanakamcityxpress@gmail.com</span></div>
+                <div class="item"><i class="fa fa-facebook"></i><span>vanakamcityxpress</span></div>
+                <div class="item"><i class="fa fa-twitter"></i><span>vanakamcityxpress</span></div>
+                <div class="item"><i class="fa fa-youtube-play"></i><span>VanakamCityXpress</span></div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="inside-date" id="newsDate">DATE : 10/01/26</div>
+
+            <div class="inside-article">
+                <div class="inside-header">
+                    <div class="inside-pin">
+                        <img src="./assets/location.jpg" alt="Location Pin">
+                    </div>
+                    <div id="newsTitle">கோவை</div>
+                </div>
+
+                <div class="image-container">
+                    <img id="newsImage" src="./assets/thala.webp" alt="செய்தி படம்" class="article-image">
+                </div>
+
+                <div class="caption">
+                    <div class="caption-title" id="newsHeadline">'தீ பரவட்டும், அண்ணா ஆள்கிறான்'</div>
+                    <div id="newsContent"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-top">
+            <div class="footer-logo">
+                <img src="./assets/news_template2.png" alt="Footer" class="footer-img">
             </div>
         </div>
     </div>
 
-    <div class="footer-top">
-        <div class="footer-logo">
-            <img src="./assets/news_template2.png" alt="Footer" class="footer-img">
-        </div>
-    </div>
-</div>
+    <script>
+        // 🔥 FULL DYNAMIC SYSTEM WITH IMAGE CONTROL
+        let newsData = {
+            location: "கோவை",
+            date: "10/01/26",
+            headline: "தீ பரவட்டும், அண்ணா ஆள்கிறான்",
+            content: `சிவகார்த்திகேயன் நடித்திருக்கும் பராசக்தி திரைப்படம் சனிக்கிழமையன்று (ஜனவரி 10) வெளியாகிறது. இந்தப் படம் மத்திய திரைப்பட சான்றிதழ் வாரியத்தின் (சிபிஎப்சி) சான்றிதழ் பெறுவதற்காக அனுப்பப்பட்டபோது, அந்தப் படத்திலிருந்து 20க்கும் மேற்பட்ட விஷயங்களை மாற்றவும் நீக்கவும் சொல்லப்பட்டது.`,
+            image: "./assets/thala.webp"
+        };
 
-<script>
-// 🔥 FULL DYNAMIC SYSTEM WITH IMAGE CONTROL
-let newsData = {
-    location: "கோவை",
-    date: "08/01/26",
-    headline: "தீ பரவட்டும், அண்ணா ஆள்கிறான்",
-    content: `சிவகார்த்திகேயன் நடித்திருக்கும் பராசக்தி திரைப்படம் சனிக்கிழமையன்று (ஜனவரி 10) வெளியாகிறது. இந்தப் படம் மத்திய திரைப்பட சான்றிதழ் வாரியத்தின் (சிபிஎப்சி) சான்றிதழ் பெறுவதற்காக அனுப்பப்பட்டபோது, அந்தப் படத்திலிருந்து 20க்கும் மேற்பட்ட விஷயங்களை மாற்றவும் நீக்கவும் சொல்லப்பட்டது.`,
-    image: "./assets/thala.webp"
-};
+        function updateNews() {
+            newsData.location = document.getElementById('locationInput').value;
+            newsData.date = document.getElementById('dateInput').value;
+            newsData.headline = document.getElementById('headlineInput').value;
+            newsData.content = document.getElementById('contentInput').value;
 
-function updateNews() {
-    newsData.location = document.getElementById('locationInput').value;
-    newsData.date = document.getElementById('dateInput').value;
-    newsData.headline = document.getElementById('headlineInput').value;
-    newsData.content = document.getElementById('contentInput').value;
-    
-    document.getElementById('newsTitle').textContent = newsData.location;
-    document.getElementById('newsDate').textContent = `DATE : ${newsData.date}`;
-    document.getElementById('newsHeadline').textContent = newsData.headline;
-    document.getElementById('newsContent').innerHTML = newsData.content.replace(/\n/g, '<br><br>');
-    
-    showToast('✅ அனைத்தும் புதுப்பிக்கப்பட்டது!', 'success');
-}
+            document.getElementById('newsTitle').textContent = newsData.location;
+            document.getElementById('newsDate').textContent = `DATE : ${newsData.date}`;
+            document.getElementById('newsHeadline').textContent = newsData.headline;
+            document.getElementById('newsContent').innerHTML = newsData.content.replace(/\n/g, '<br><br>');
 
-function resetNews() {
-    document.getElementById('locationInput').value = 'கோவை';
-    document.getElementById('dateInput').value = '08/01/26';
-    document.getElementById('headlineInput').value = 'தீ பரவட்டும், அண்ணா ஆள்கிறான்';
-    document.getElementById('contentInput').value = `சிவகார்த்திகேயன் நடித்திருக்கும் பராசக்தி திரைப்படம் சனிக்கிழமையன்று (ஜனவரி 10) வெளியாகிறது. இந்தப் படம் மத்திய திரைப்பட சான்றிதழ் வாரியத்தின் (சிபிஎப்சி) சான்றிதழ் பெறுவதற்காக அனுப்பப்பட்டபோது,
+            showToast('✅ அனைத்தும் புதுப்பிக்கப்பட்டது!', 'success');
+        }
+
+        function resetNews() {
+            document.getElementById('locationInput').value = 'கோவை';
+            document.getElementById('dateInput').value = '10/01/26';
+            document.getElementById('headlineInput').value = 'தீ பரவட்டும், அண்ணா ஆள்கிறான்';
+            document.getElementById('contentInput').value = `சிவகார்த்திகேயன் நடித்திருக்கும் பராசக்தி திரைப்படம் சனிக்கிழமையன்று (ஜனவரி 10) வெளியாகிறது. இந்தப் படம் மத்திய திரைப்பட சான்றிதழ் வாரியத்தின் (சிபிஎப்சி) சான்றிதழ் பெறுவதற்காக அனுப்பப்பட்டபோது,
     
     அந்தப் படத்திலிருந்து 20க்கும் மேற்பட்ட விஷயங்களை மாற்றவும் நீக்கவும் சொல்லப்பட்டது. `;
-    document.getElementById('previewImg').src = './assets/thala.webp';
-    newsData.image = './assets/thala.webp';
-    updateNews();
-}
+            document.getElementById('previewImg').src = './assets/thala.webp';
+            newsData.image = './assets/thala.webp';
+            updateNews();
+        }
 
-function updateImagePreview(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            newsData.image = e.target.result;
-            document.getElementById('previewImg').src = newsData.image;
-            document.getElementById('newsImage').src = newsData.image;
-            showToast('✅ படம் புதுப்பிக்கப்பட்டது!', 'success');
-        };
-        reader.readAsDataURL(file);
-    }
-}
+        function updateImagePreview(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    newsData.image = e.target.result;
+                    document.getElementById('previewImg').src = newsData.image;
+                    document.getElementById('newsImage').src = newsData.image;
+                    showToast('✅ படம் புதுப்பிக்கப்பட்டது!', 'success');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
 
-function printNews() {
-    document.querySelector('.control-panel').classList.add('hidden');
-    document.querySelector('.toggle-panel').style.display = 'none';
-    window.print();
-    setTimeout(() => {
-        document.querySelector('.control-panel').classList.remove('hidden');
-        document.querySelector('.toggle-panel').style.display = 'block';
-    }, 1000);
-}
+        function printNews() {
+            document.querySelector('.control-panel').classList.add('hidden');
+            document.querySelector('.toggle-panel').style.display = 'none';
+            window.print();
+            setTimeout(() => {
+                document.querySelector('.control-panel').classList.remove('hidden');
+                document.querySelector('.toggle-panel').style.display = 'block';
+            }, 1000);
+        }
 
-function shareWhatsApp() {
-    html2canvas(document.querySelector('.newspaper'), {
-        scale: 2, useCORS: true, backgroundColor: '#ffffff'
-    }).then(canvas => {
-        const link = document.createElement('a');
-        link.href = canvas.toDataURL();
-        link.download = `${newsData.location}_செய்தி.png`;
-        link.click();
-        
-        const text = `${newsData.location}\n${newsData.headline}\n\nவாங்கவா சிட்டி எக்ஸ்ப்ரஸ்`;
-        window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-        showToast('✅ WhatsApp-ல் பகிர தயார்!', 'success');
-    });
-}
+        function downloadNews() {
+            html2canvas(document.querySelector('.newspaper'), {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#ffffff'
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/png');
+                link.download = `${newsData.location}_செய்தி.png`;
+                link.click();
+                showToast('✅ செய்தி பதிவிறக்கம் செய்யப்பட்டது!', 'success');
+            });
+        }
 
-function togglePanel() {
-    document.getElementById('controlPanel').classList.toggle('hidden');
-}
+        function togglePanel() {
+            document.getElementById('controlPanel').classList.toggle('hidden');
+        }
 
-function showToast(message, type = 'success') {
-    const toast = document.getElementById('statusToast');
-    toast.textContent = message;
-    toast.className = `status-toast ${type}`;
-    toast.style.display = 'block';
-    setTimeout(() => toast.style.display = 'none', 3000);
-}
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('statusToast');
+            toast.textContent = message;
+            toast.className = `status-toast ${type}`;
+            toast.style.display = 'block';
+            setTimeout(() => toast.style.display = 'none', 3000);
+        }
 
-// Event Listeners
-document.getElementById('imageUpload').addEventListener('change', updateImagePreview);
-document.querySelectorAll('input, textarea').forEach(el => {
-    el.addEventListener('input', updateNews);
-});
+        // Event Listeners
+        document.getElementById('imageUpload').addEventListener('change', updateImagePreview);
+        document.querySelectorAll('input, textarea').forEach(el => {
+            el.addEventListener('input', updateNews);
+        });
 
-// Initialize
-document.addEventListener('DOMContentLoaded', updateNews);
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+        // Initialize
+        document.addEventListener('DOMContentLoaded', updateNews);
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
+
 </html>
