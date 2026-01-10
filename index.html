@@ -126,10 +126,10 @@
             border-radius: 4px;
         }
 
-     .inside-article {
-    display: flex;
-    flex-direction: column;
-}
+        .inside-article {
+            display: flex;
+            flex-direction: column;
+        }
 
         .inside-header {
             display: flex;
@@ -162,12 +162,12 @@
         .caption {
             background: white;
             color: black;
-            padding: 20px;
+            /* padding: 20px; */
             text-align: justify;
             font-size: 16px;
             line-height: 1.6;
             border-left: 4px solid blue;
-            margin-top: 10px;
+            /* margin-top: 10px; */
         }
 
         .caption-title {
@@ -249,17 +249,22 @@
             /* optional: center heading */
             padding-bottom: 4px;
         }
-.wa-row {
-    display: flex;
-    flex-direction: column; /* heading on top, bottom row below */
-    gap: 8px;
-    width: 250px; /* adjust as needed */
-    border-radius: 8px;
-    margin-top: 20px; /* space from caption */
 
-    /* Right-bottom alignment */
-    align-self: flex-end; /* stick to right inside the parent flex container */
-}
+        .wa-row {
+            display: flex;
+            flex-direction: column;
+            /* heading on top, bottom row below */
+            gap: 8px;
+            width: 250px;
+            /* adjust as needed */
+            border-radius: 8px;
+            margin-top: 20px;
+            /* space from caption */
+
+            /* Right-bottom alignment */
+            align-self: flex-end;
+            /* stick to right inside the parent flex container */
+        }
 
 
 
@@ -464,6 +469,22 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
+        .image-heading {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: left;
+            /* 🔥 left side */
+            margin-bottom: 10px;
+            color: #0b1fb8;
+
+            border-left: 5px solid #0b1fb8;
+            padding-left: 10px;
+
+            width: fit-content;
+            /* heading width content மட்டும் */
+        }
+
+
         @media print {
 
             .control-panel,
@@ -494,6 +515,10 @@
             <div class="control-group">
                 <label>📅 தேதி</label>
                 <input type="text" id="dateInput" value="10/01/26">
+            </div>
+            <div class="control-group">
+                <label>🖼️ பட தலைப்பு</label>
+                <input type="text" id="imageHeadingInput" value="முக்கிய புகைப்படம்">
             </div>
 
             <!-- HEADLINE -->
@@ -574,10 +599,17 @@
                     </div>
                     <div id="newsTitle">கோவை</div>
                 </div>
-
                 <div class="image-container">
+
+                    <!-- ✅ MAIN IMAGE HEADING (DISPLAY) -->
+                    <div class="image-heading" id="newsImageHeading">
+                        முக்கிய புகைப்படம்
+                    </div>
+
                     <img id="newsImage" src="./assets/thala.webp" alt="செய்தி படம்" class="article-image">
                 </div>
+
+
 
                 <div class="caption">
                     <div class="caption-title" id="newsHeadline">'தீ பரவட்டும், அண்ணா ஆள்கிறான்'</div>
@@ -618,28 +650,40 @@
             location: "கோவை",
             date: "10/01/26",
             headline: "தீ பரவட்டும், அண்ணா ஆள்கிறான்",
-            content: `சிவகார்த்திகேயன் நடித்திருக்கும் பராசக்தி திரைப்படம் சனிக்கிழமையன்று (ஜனவரி 10) வெளியாகிறது. இந்தப் படம் மத்திய திரைப்பட சான்றிதழ் வாரியத்தின் (சிபிஎப்சி) சான்றிதழ் பெறுவதற்காக அனுப்பப்பட்டபோது, அந்தப் படத்திலிருந்து 20க்கும் மேற்பட்ட விஷயங்களை மாற்றவும் நீக்கவும் சொல்லப்பட்டது.`,
+            imageHeading: "முக்கிய புகைப்படம்",
+            content: `...`,
             image: "./assets/thala.webp"
         };
 
-        function updateNews() {
-            newsData.location = document.getElementById('locationInput').value;
-            newsData.date = document.getElementById('dateInput').value;
-            newsData.headline = document.getElementById('headlineInput').value;
-            newsData.content = document.getElementById('contentInput').value;
 
-            document.getElementById('newsTitle').textContent = newsData.location;
-            document.getElementById('newsDate').textContent = `DATE : ${newsData.date}`;
-            document.getElementById('newsHeadline').textContent = newsData.headline;
-            document.getElementById('newsContent').innerHTML = newsData.content.replace(/\n/g, '<br><br>');
+        function updateNews() {
+            newsData.location = locationInput.value;
+            newsData.date = dateInput.value;
+            newsData.headline = headlineInput.value;
+            newsData.content = contentInput.value;
+            newsData.imageHeading = imageHeadingInput.value;
+
+            newsTitle.textContent = newsData.location;
+            newsDate.textContent = `DATE : ${newsData.date}`;
+            newsHeadline.textContent = newsData.headline;
+            newsContent.innerHTML = newsData.content.replace(/\n/g, '<br><br>');
+
+            // ✅ MAIN IMAGE HEADING UPDATE
+            const imgHeading = document.getElementById('newsImageHeading');
+            imgHeading.textContent = newsData.imageHeading;
+            imgHeading.style.display =
+                newsData.imageHeading.trim() ? 'block' : 'none';
 
             showToast('✅ அனைத்தும் புதுப்பிக்கப்பட்டது!', 'success');
         }
+
 
         function resetNews() {
             document.getElementById('locationInput').value = 'கோவை';
             document.getElementById('dateInput').value = '10/01/26';
             document.getElementById('headlineInput').value = 'தீ பரவட்டும், அண்ணா ஆள்கிறான்';
+            document.getElementById('imageHeadingInput').value = 'முக்கிய புகைப்படம்';
+
             document.getElementById('contentInput').value = `சிவகார்த்திகேயன் நடித்திருக்கும் பராசக்தி திரைப்படம் சனிக்கிழமையன்று (ஜனவரி 10) வெளியாகிறது. இந்தப் படம் மத்திய திரைப்பட சான்றிதழ் வாரியத்தின் (சிபிஎப்சி) சான்றிதழ் பெறுவதற்காக அனுப்பப்பட்டபோது,
     
     அந்தப் படத்திலிருந்து 20க்கும் மேற்பட்ட விஷயங்களை மாற்றவும் நீக்கவும் சொல்லப்பட்டது. `;
