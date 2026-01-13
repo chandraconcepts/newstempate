@@ -30,6 +30,135 @@
             padding: 20px;
             border: 1px solid #ccc;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        /* Editable elements */
+        .editable {
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.2s;
+        }
+
+        .editable:hover {
+            background-color: rgba(11, 31, 184, 0.1);
+            outline: 2px dashed #0b1fb8;
+        }
+
+        .editable::after {
+            content: "✏️";
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .editable:hover::after {
+            opacity: 1;
+        }
+
+        /* Edit Modal */
+        .edit-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 20000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #0b1fb8;
+        }
+
+        .modal-header h3 {
+            color: #0b1fb8;
+            margin: 0;
+        }
+
+        .close-modal {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .modal-group {
+            margin-bottom: 15px;
+        }
+
+        .modal-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #0b1fb8;
+        }
+
+        .modal-group input,
+        .modal-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Noto Sans Tamil', sans-serif;
+            font-size: 14px;
+        }
+
+        .modal-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .modal-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Noto Sans Tamil', sans-serif;
+        }
+
+        .btn-save {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-cancel {
+            background: #6c757d;
+            color: white;
         }
 
         /* Header */
@@ -146,7 +275,6 @@
 
         .image-container {
             text-align: center;
-            /* margin: 20px 0; */
         }
 
         .article-image {
@@ -162,12 +290,9 @@
         .caption {
             background: white;
             color: black;
-            /* padding: 20px; */
             text-align: justify;
             font-size: 16px;
             line-height: 1.6;
-            /* border-left: 4px solid blue; */
-            /* margin-top: 10px; */
         }
 
         .caption-title {
@@ -191,7 +316,7 @@
             margin-left: 2px;
         }
 
-        /* 🔥 COMPLETE CONTROL PANEL */
+        /* Control Panel */
         .control-panel {
             position: fixed;
             top: 0;
@@ -238,36 +363,24 @@
             margin-bottom: 25px;
         }
 
-
-
         .wa-title {
             font-size: 14px;
             font-weight: bold;
             color: #075E54;
             margin: 0;
             text-align: center;
-            /* optional: center heading */
             padding-bottom: 4px;
         }
 
         .wa-row {
             display: flex;
             flex-direction: column;
-            /* heading on top, bottom row below */
             gap: 8px;
             width: 250px;
-            /* adjust as needed */
             border-radius: 8px;
             margin-top: 20px;
-            /* space from caption */
-
-            /* Right-bottom alignment */
             align-self: flex-end;
-            /* stick to right inside the parent flex container */
         }
-
-
-
 
         .wa-title {
             font-size: 14px;
@@ -282,7 +395,6 @@
         .wa-bottom {
             display: flex;
             justify-content: space-between;
-            /* left and right spacing */
             align-items: center;
         }
 
@@ -311,10 +423,6 @@
             padding: 3px;
             background: #fff;
         }
-
-
-
-
 
         @media (max-width: 480px) {
             .control-grid {
@@ -473,23 +581,28 @@
             font-size: 20px;
             font-weight: bold;
             text-align: left;
-            /* 🔥 left side */
             margin-bottom: 10px;
             color: #0b1fb8;
-
             border-left: 5px solid #0b1fb8;
             padding-left: 10px;
-
             width: fit-content;
-            /* heading width content மட்டும் */
         }
-
 
         @media print {
 
             .control-panel,
             .toggle-panel,
-            .status-toast {
+            .status-toast,
+            .edit-modal {
+                display: none !important;
+            }
+
+            .editable:hover {
+                background-color: transparent !important;
+                outline: none !important;
+            }
+
+            .editable::after {
                 display: none !important;
             }
         }
@@ -497,6 +610,25 @@
 </head>
 
 <body>
+    <!-- 🔥 EDIT MODAL -->
+    <div class="edit-modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">தொகு</h3>
+                <button class="close-modal" onclick="closeModal()">✖ மூடு</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-group" id="modalInputs">
+                    <!-- Inputs will be dynamically inserted here -->
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn btn-save" onclick="saveEdit()">💾 சேமி</button>
+                <button class="modal-btn btn-cancel" onclick="closeModal()">❌ ரத்து</button>
+            </div>
+        </div>
+    </div>
+
     <!-- 🔥 FULLY LOADED CONTROL PANEL -->
     <div class="control-panel" id="controlPanel">
         <div class="panel-header">
@@ -559,7 +691,6 @@
             <button class="action-btn btn-whatsapp" onclick="downloadNews()">
                 <i class="fa fa-download"></i>📥 பதிவிறக்கம்
             </button>
-
         </div>
     </div>
 
@@ -590,30 +721,38 @@
         </div>
 
         <div class="main-content">
-            <div class="inside-date" id="newsDate">DATE : 10/01/26</div>
+            <!-- Editable Date -->
+            <div class="inside-date editable" id="newsDate" data-type="date" onclick="openEditModal(this)">
+                DATE : 10/01/26
+            </div>
 
             <div class="inside-article">
+                <!-- Editable Location -->
                 <div class="inside-header">
                     <div class="inside-pin">
                         <img src="./assets/location.jpg" alt="Location Pin">
                     </div>
-                    <div id="newsTitle">கோவை</div>
+                    <div class="editable" id="newsTitle" data-type="location" onclick="openEditModal(this)">கோவை</div>
                 </div>
+                
                 <div class="image-container">
-
-                    <!-- ✅ MAIN IMAGE HEADING (DISPLAY) -->
-                    <div class="image-heading" id="newsImageHeading">
+                    <!-- Editable Image Heading -->
+                    <div class="image-heading editable" id="newsImageHeading" data-type="imageHeading" onclick="openEditModal(this)">
                         முக்கிய புகைப்படம்
                     </div>
 
-                    <img id="newsImage" src="./assets/thala.webp" alt="செய்தி படம்" class="article-image">
+                    <!-- Editable Image -->
+                    <img id="newsImage" src="./assets/thala.webp" alt="செய்தி படம்" class="article-image editable" data-type="image" onclick="openImageEdit(this)">
                 </div>
 
-
-
                 <div class="caption">
-                    <div class="caption-title" id="newsHeadline">'தீ பரவட்டும், அண்ணா ஆள்கிறான்'</div>
-                    <div id="newsContent"></div>
+                    <!-- Editable Headline -->
+                    <div class="caption-title editable" id="newsHeadline" data-type="headline" onclick="openEditModal(this)">
+                        'தீ பரவட்டும், அண்ணா ஆள்கிறான்'
+                    </div>
+                    
+                    <!-- Editable Content -->
+                    <div class="editable" id="newsContent" data-type="content" onclick="openEditModal(this)"></div>
                 </div>
 
                 <!-- WhatsApp row after caption -->
@@ -629,12 +768,7 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
-
         </div>
 
         <div class="footer-top">
@@ -645,50 +779,156 @@
     </div>
 
     <script>
-        // 🔥 FULL DYNAMIC SYSTEM WITH IMAGE CONTROL
+        // 🔥 FULL DYNAMIC SYSTEM WITH INLINE EDITING
         let newsData = {
             location: "கோவை",
             date: "10/01/26",
             headline: "தீ பரவட்டும், அண்ணா ஆள்கிறான்",
             imageHeading: "முக்கிய புகைப்படம்",
-            content: `...`,
+            content: `சிவகார்த்திகேயன் நடித்திருக்கும் பராசக்தி திரைப்படம் சனிக்கிழமையன்று (ஜனவரி 10) வெளியாகிறது. இந்தப் படம் மத்திய திரைப்பட சான்றிதழ் வாரியத்தின் (சிபிஎப்சி) சான்றிதழ் பெறுவதற்காக அனுப்பப்பட்டபோது, அந்தப் படத்திலிருந்து 20க்கும் மேற்பட்ட விஷயங்களை மாற்றவும் நீக்கவும் சொல்லப்பட்டது. `,
             image: "./assets/thala.webp"
         };
 
+        let currentEditingElement = null;
+        let currentDataType = "";
 
-        function updateNews() {
-            newsData.location = locationInput.value;
-            newsData.date = dateInput.value;
-            newsData.headline = headlineInput.value;
-            newsData.content = contentInput.value;
-            newsData.imageHeading = imageHeadingInput.value;
-
-            newsTitle.textContent = newsData.location;
-            newsDate.textContent = `DATE : ${newsData.date}`;
-            newsHeadline.textContent = newsData.headline;
-            newsContent.innerHTML = newsData.content.replace(/\n/g, '<br><br>');
-
-            // ✅ MAIN IMAGE HEADING UPDATE
-            const imgHeading = document.getElementById('newsImageHeading');
-            imgHeading.textContent = newsData.imageHeading;
-            imgHeading.style.display =
-                newsData.imageHeading.trim() ? 'block' : 'none';
-
-            showToast('✅ அனைத்தும் புதுப்பிக்கப்பட்டது!', 'success');
+        function openEditModal(element) {
+            const type = element.getAttribute('data-type');
+            currentEditingElement = element;
+            currentDataType = type;
+            
+            const modal = document.getElementById('editModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalInputs = document.getElementById('modalInputs');
+            
+            // Clear previous inputs
+            modalInputs.innerHTML = '';
+            
+            // Set modal title based on type
+            const titles = {
+                'location': '📍 ஊர் பெயர் தொகு',
+                'date': '📅 தேதி தொகு',
+                'headline': '📰 தலைப்பு தொகு',
+                'imageHeading': '🖼️ பட தலைப்பு தொகு',
+                'content': '📝 செய்தி உரை தொகு'
+            };
+            
+            modalTitle.textContent = titles[type] || 'தொகு';
+            
+            // Get current value
+            let currentValue = '';
+            if (type === 'date') {
+                currentValue = element.textContent.replace('DATE : ', '');
+            } else if (type === 'content') {
+                currentValue = element.innerHTML.replace(/<br>/g, '\n');
+            } else {
+                currentValue = element.textContent;
+            }
+            
+            // Create input based on type
+            if (type === 'content') {
+                modalInputs.innerHTML = `
+                    <label for="editValue">உள்ளடக்கம்:</label>
+                    <textarea id="editValue" rows="8">${currentValue}</textarea>
+                `;
+            } else {
+                modalInputs.innerHTML = `
+                    <label for="editValue">மதிப்பு:</label>
+                    <input type="text" id="editValue" value="${currentValue}">
+                `;
+            }
+            
+            // Show modal
+            modal.style.display = 'flex';
         }
 
+        function openImageEdit(element) {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        element.src = e.target.result;
+                        newsData.image = e.target.result;
+                        document.getElementById('previewImg').src = e.target.result;
+                        showToast('✅ படம் மாற்றப்பட்டது!', 'success');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            
+            input.click();
+        }
+
+        function saveEdit() {
+            if (!currentEditingElement) return;
+            
+            const value = document.getElementById('editValue').value;
+            
+            // Update the element based on type
+            if (currentDataType === 'date') {
+                currentEditingElement.textContent = `DATE : ${value}`;
+                newsData.date = value;
+                document.getElementById('dateInput').value = value;
+            } else if (currentDataType === 'location') {
+                currentEditingElement.textContent = value;
+                newsData.location = value;
+                document.getElementById('locationInput').value = value;
+            } else if (currentDataType === 'headline') {
+                currentEditingElement.textContent = value;
+                newsData.headline = value;
+                document.getElementById('headlineInput').value = value;
+            } else if (currentDataType === 'imageHeading') {
+                currentEditingElement.textContent = value;
+                newsData.imageHeading = value;
+                document.getElementById('imageHeadingInput').value = value;
+            } else if (currentDataType === 'content') {
+                currentEditingElement.innerHTML = value.replace(/\n/g, '<br><br>');
+                newsData.content = value;
+                document.getElementById('contentInput').value = value;
+            }
+            
+            closeModal();
+            showToast('✅ தொகுக்கப்பட்டது!', 'success');
+        }
+
+        function closeModal() {
+            document.getElementById('editModal').style.display = 'none';
+            currentEditingElement = null;
+            currentDataType = "";
+        }
+
+        function updateNews() {
+            // Update from control panel
+            newsData.location = document.getElementById('locationInput').value;
+            newsData.date = document.getElementById('dateInput').value;
+            newsData.headline = document.getElementById('headlineInput').value;
+            newsData.content = document.getElementById('contentInput').value;
+            newsData.imageHeading = document.getElementById('imageHeadingInput').value;
+            
+            // Update display elements
+            document.getElementById('newsTitle').textContent = newsData.location;
+            document.getElementById('newsDate').textContent = `DATE : ${newsData.date}`;
+            document.getElementById('newsHeadline').textContent = newsData.headline;
+            document.getElementById('newsContent').innerHTML = newsData.content.replace(/\n/g, '<br><br>');
+            document.getElementById('newsImageHeading').textContent = newsData.imageHeading;
+            
+            showToast('✅ அனைத்தும் புதுப்பிக்கப்பட்டது!', 'success');
+        }
 
         function resetNews() {
             document.getElementById('locationInput').value = 'கோவை';
             document.getElementById('dateInput').value = '10/01/26';
             document.getElementById('headlineInput').value = 'தீ பரவட்டும், அண்ணா ஆள்கிறான்';
             document.getElementById('imageHeadingInput').value = 'முக்கிய புகைப்படம்';
-
-            document.getElementById('contentInput').value = `சிவகார்த்திகேயன் நடித்திருக்கும் பராசக்தி திரைப்படம் சனிக்கிழமையன்று (ஜனவரி 10) வெளியாகிறது. இந்தப் படம் மத்திய திரைப்பட சான்றிதழ் வாரியத்தின் (சிபிஎப்சி) சான்றிதழ் பெறுவதற்காக அனுப்பப்பட்டபோது,
-    
-    அந்தப் படத்திலிருந்து 20க்கும் மேற்பட்ட விஷயங்களை மாற்றவும் நீக்கவும் சொல்லப்பட்டது. `;
+            document.getElementById('contentInput').value = newsData.content;
             document.getElementById('previewImg').src = './assets/thala.webp';
             newsData.image = './assets/thala.webp';
+            
             updateNews();
         }
 
@@ -696,7 +936,7 @@
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function (e) {
+                reader.onload = function(e) {
                     newsData.image = e.target.result;
                     document.getElementById('previewImg').src = newsData.image;
                     document.getElementById('newsImage').src = newsData.image;
@@ -709,6 +949,7 @@
         function printNews() {
             document.querySelector('.control-panel').classList.add('hidden');
             document.querySelector('.toggle-panel').style.display = 'none';
+            document.getElementById('editModal').style.display = 'none';
             window.print();
             setTimeout(() => {
                 document.querySelector('.control-panel').classList.remove('hidden');
@@ -742,14 +983,29 @@
             setTimeout(() => toast.style.display = 'none', 3000);
         }
 
+        // Close modal when clicking outside
+        document.getElementById('editModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
         // Event Listeners
         document.getElementById('imageUpload').addEventListener('change', updateImagePreview);
-        document.querySelectorAll('input, textarea').forEach(el => {
+        document.querySelectorAll('#controlPanel input, #controlPanel textarea').forEach(el => {
             el.addEventListener('input', updateNews);
         });
 
         // Initialize
-        document.addEventListener('DOMContentLoaded', updateNews);
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial content
+            document.getElementById('newsContent').innerHTML = newsData.content.replace(/\n/g, '<br><br>');
+            
+            // Make all editable elements clickable
+            document.querySelectorAll('.editable').forEach(el => {
+                el.style.cursor = 'pointer';
+            });
+        });
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
